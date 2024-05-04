@@ -30,7 +30,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: Text(
-                      "Blood Champ",
+                      "Blood Champ Application",
                       style: TextStyle(fontSize: 30, color: Colors.white),
                     ),
                   ),
