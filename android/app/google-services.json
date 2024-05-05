@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1015588608849",
+    "project_id": "blooddonortest-76bd4",
+    "storage_bucket": "blooddonortest-76bd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015588608849:android:78bfefdfd02964fd5ed170",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQFOoN2Ax1dTlBE7B7ND5ToN-F1NGer4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
