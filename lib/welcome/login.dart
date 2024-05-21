@@ -1,24 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// Import necessary packages and screens
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/controlles/FirebaseService.dart';
-
-void main() {
-  runApp(LoginApp());
-}
-
-class LoginApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login Page',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: LoginPage(),
-    );
-  }
-}
+import 'package:flutter_application_1/welcome/signup.dart'; // Import ViewUsers.dart
 
 class LoginPage extends StatefulWidget {
   @override
@@ -28,54 +10,93 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-final FirebaseService _auth = FirebaseService();
+  String _errorText = ''; // Error message text
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login Page'),
       ),
+      backgroundColor: Colors.black, // Set background color to black
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Email TextField
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
                 labelText: 'Email',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red), // Red border color
+                ),
+                labelStyle: TextStyle(color: Color.fromARGB(255, 229, 239, 198)), // Blue label text color
               ),
+              style: TextStyle(color: Colors.white), // White text color
             ),
             SizedBox(height: 16.0),
+            // Password TextField
             TextField(
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Password',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red), // Red border color
+                ),
+                labelStyle: TextStyle(color: Color.fromARGB(255, 144, 211, 89)), // Blue label text color
               ),
+              style: TextStyle(color: Colors.white), // White text color
             ),
             SizedBox(height: 16.0),
+            // Error Text (Displayed conditionally)
+            Text(
+              _errorText,
+              style: TextStyle(color: Colors.red),
+            ),
+            SizedBox(height: 16.0),
+            // Login Button
             ElevatedButton(
               onPressed: () async {
-                String email = _emailController.text;
-                String password = _passwordController.text;
-                // Here you can implement the logic for authentication
-                // For example, you can use Firebase Authentication:
-                // FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-                // After authentication, you can navigate to the next screen
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => HomePage()),
-                // );
-                 User? _user = await _auth.signUpWithEmailAndPassword(email, password);
-    if (_user != null) {
-      print("User logged in");
-      print("User logged in");
-    }
+                // Your login logic
               },
               child: Text('Login'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white, // White text color
+                backgroundColor: Colors.red, // Red button color
+              ),
+            ),
+            SizedBox(height: 8.0), // Add some space between buttons
+            // Register Button
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignupPage()), // Navigate to SignUpPage
+                );
+              },
+              child: Text('Register'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white, // White text color
+                backgroundColor: Colors.blue, // Blue button color
+              ),
+            ),
+            SizedBox(height: 8.0), // Add some space between buttons
+            // View All Members Button
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ViewUsers()), // Navigate to ViewUsers
+                );
+              },
+              child: Text('View All Members'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white, // White text color
+                backgroundColor: Colors.green, // Green button color
+              ),
             ),
           ],
         ),
@@ -89,4 +110,7 @@ final FirebaseService _auth = FirebaseService();
     _passwordController.dispose();
     super.dispose();
   }
+}
+
+ViewUsers() {
 }
