@@ -1,9 +1,8 @@
 import 'dart:convert';
 
-
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_application_1/controlles/FirebaseService.dart';
 import 'package:flutter_application_1/model/model.dart';
 import 'package:flutter_application_1/welcome/login.dart';
@@ -18,6 +17,12 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   final FirebaseService _auth = FirebaseService();
+
+
+void getLocation() async {
+  
+}
+
   List<Album> globalAlbums = [];
   Future<http.Response> fetchAlbums() async {
     var response = await http
